@@ -22,3 +22,6 @@ ITEM_PIPELINES = {
                   }
 #Sets delay
 DOWNLOAD_DELAY = 0.05
+#Log level
+LOG_LEVEL='INFO' 
+

@@ -24,7 +24,7 @@ class BnucrawlSpider(scrapy.Spider):
         total_pages = "".join(sel.xpath('//div[@id="AspNetPager1"]//a[last()]/@href').extract()).split("'")[-2]
         pagenums = string.atoi(total_pages)
         print pagenums
-        for pagenum in range(1,pagenums+1):
+        for pagenum in range(1,2):
             sites = sel.xpath('//dl[@class="ji120101"]//dd')
             follow_url = response.url.split("/")
             follow_url = [follow_url[0],"//",follow_url[2],"/"]
@@ -48,6 +48,7 @@ class BnucrawlSpider(scrapy.Spider):
             action_link.click()
             time.sleep(5)
             sel = Selector(text=self.br.page_source)
+        self.br.quit()
             
 
     def parse_item(self,response):
