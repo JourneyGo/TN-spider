@@ -154,7 +154,6 @@ class CAUcrawlSpider(scrapy.Spider):
 ### 
     #判重部分 3
     def get_lastCrawl(self):
-        db = MySQLdb.connect("182.92.10.253","root","thursdaynight","zhaoxuanjiang" )
         # db = MySQLdb.connect("localhost","root","root","jobinfo")        
         # 使用cursor()方法获取操作游标 
         cursor = db.cursor()

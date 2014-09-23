@@ -16,12 +16,9 @@ class MysqlPipeline(object):
     def __init__(self):
         self.dbpool = adbapi.ConnectionPool('MySQLdb',
                     # host = '127.0.0.1',
-                    host = "182.92.10.253",
                     # db = 'jobinfo',#
-                    db = "zhaoxuanjiang",
                     user = 'root',
                     # passwd = 'root',
-                    passwd = "thursdaynight",
                     cursorclass = MySQLdb.cursors.DictCursor,
                     charset = 'utf8',
                     use_unicode = True
