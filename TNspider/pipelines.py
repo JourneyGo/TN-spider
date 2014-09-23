@@ -15,11 +15,13 @@ from twisted.enterprise import adbapi
 class MysqlPipeline(object):
     def __init__(self):
         self.dbpool = adbapi.ConnectionPool('MySQLdb',
-                    host = '127.0.0.1',
-#                    port = 3307,
-                    db = 'jobinfo',
+                    # host = '127.0.0.1',
+                    host = "182.92.10.253",
+                    # db = 'jobinfo',#
+                    db = "zhaoxuanjiang",
                     user = 'root',
-                    passwd = 'root',
+                    # passwd = 'root',
+                    passwd = "thursdaynight",
                     cursorclass = MySQLdb.cursors.DictCursor,
                     charset = 'utf8',
                     use_unicode = True
@@ -34,16 +36,20 @@ class MysqlPipeline(object):
     def _conditional_insert(self,tx,item):
         if item.get('title'):
             tx.execute(\
-                "insert into new_table (title,university,city,description,link,date,click_times)\
-                values (%s,%s,%s,%s,%s,%s,%s)",
+                "insert into jobinfo (title,university,time,address,link,date,click_times,flag,abbreviation,description,city)\
+                values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                 (
                 "".join(item['title']),
                 "".join(item['university']),
-                "".join(item['city']),
-                "".join(item['desc']),
+                "".join(item['time']),
+                "".join(item['addr']),
                 item['link'],
                 "".join(item['date']),
-                string.atoi("".join(item['click_times']))
+                string.atoi("".join(item['click_times']),),
+                item['flag'],
+                item['abbreviation'],
+                ''.join(item['desc']),
+                ''.join(item['city'])
                 )
                 )
     def handle_error(self,e):

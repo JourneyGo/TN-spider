@@ -19,5 +19,7 @@ class BNUItem(scrapy.Item):
     fields = scrapy.Field()
     link = scrapy.Field()
     desc = scrapy.Field()
+    flag = scrapy.Field()
+    abbreviation = scrapy.Field()
 
 
